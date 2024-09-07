@@ -1,0 +1,17 @@
+
+ import "./sosAlert.zmodel"  
+ import "./officer.zmodel"  
+
+model PoliceStation {
+
+    id                String        @id @default(uuid())  
+    name            String          
+    latitude    Float            
+    longitude  Float            
+
+sosAlerts  SosAlert[]  @relation("policeStation")  
+    officers    Officer[]  @relation("policeStation")  
+      dateCreated DateTime @default(now())
+      dateUpdated DateTime @updatedAt  @default(now())
+      @@allow("all", true)
+}

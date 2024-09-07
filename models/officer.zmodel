@@ -1,0 +1,17 @@
+
+ import "./policeStation.zmodel"  
+
+model Officer {
+
+    id                String        @id @default(uuid())  
+    name            String          
+    rank            String          
+    contactNo  String          
+    email          String?          
+
+policeStationId  String?          
+    policeStation  PoliceStation?  @relation(fields: [policeStationId], references: [id], name:"policeStation")  
+      dateCreated DateTime @default(now())
+      dateUpdated DateTime @updatedAt  @default(now())
+      @@allow("all", true)
+}

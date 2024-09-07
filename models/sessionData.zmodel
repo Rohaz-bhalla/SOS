@@ -1,0 +1,15 @@
+
+ import "./user.zmodel"  
+
+model SessionData {
+
+    id                String        @id @default(uuid())  
+    sessionToken  String          
+    expiryDate  String          
+
+userId        String?          
+    user            User?            @relation(fields: [userId], references: [id], name:"user")  
+      dateCreated DateTime @default(now())
+      dateUpdated DateTime @updatedAt  @default(now())
+      @@allow("all", true)
+}

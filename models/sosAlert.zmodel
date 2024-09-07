@@ -1,0 +1,20 @@
+
+ import "./user.zmodel"  
+ import "./location.zmodel"  
+ import "./policeStation.zmodel"  
+
+model SosAlert {
+
+    id                String        @id @default(uuid())  
+    alertTime  String          
+
+userId        String?          
+    user            User?            @relation(fields: [userId], references: [id], name:"user")  
+    locationId  String?          
+    location    Location?    @relation(fields: [locationId], references: [id], name:"location")  
+    policeStationId  String?          
+    policeStation  PoliceStation?  @relation(fields: [policeStationId], references: [id], name:"policeStation")  
+      dateCreated DateTime @default(now())
+      dateUpdated DateTime @updatedAt  @default(now())
+      @@allow("all", true)
+}
